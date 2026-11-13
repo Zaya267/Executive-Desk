@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src https:; base-uri 'none'; form-action 'none'">
+<title>Executive Desk</title>
+<style>
+:root{--bg:#f2f4f7;--card:#fff;--tx:#17212f;--mu:#586476;--bd:#d5dbe3;--ac:#14365d;--br:#b7791f;--bad:#b42318;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e141c;--card:#151d29;--tx:#e6ebf2;--mu:#98a4b4;--bd:#273241;--br:#e0b25a;--bad:#ff8f86}}
+:root[data-theme="dark"]{--bg:#0e141c;--card:#151d29;--tx:#e6ebf2;--mu:#98a4b4;--bd:#273241;--br:#e0b25a;--bad:#ff8f86}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--ac);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11}
+.bar{background:var(--ac);color:#fff}
+.brand{display:flex;align-items:center;gap:12px;max-width:960px;margin:0 auto;padding:12px 16px}
+.brand img{height:30px;max-width:110px;object-fit:contain;background:#fff;border-radius:3px;padding:2px}
+.brand b{font-size:17px;font-weight:600;flex:1}
+.brand span{font-size:13px;opacity:.85}
+.tabs{background:var(--card);border-bottom:1px solid var(--bd)}
+nav{display:flex;overflow-x:auto;max-width:960px;margin:0 auto;padding:0 8px}
+nav a{padding:12px 14px;color:var(--mu);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;font-size:14px;font-weight:500}
+nav a:hover{color:var(--tx)}
+nav a.on{color:var(--tx);border-color:var(--tx);font-weight:600}
+main{max-width:960px;margin:0 auto;padding:20px 16px 32px}
+h2{font-size:20px;font-weight:600;line-height:1.3;margin:0}
+h3{font-size:15px;font-weight:600;margin:0 0 6px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:12px 16px;margin-bottom:8px}
+.card.late{border-left:3px solid var(--bad)}
+.ct{cursor:pointer}
+.ct b{font-weight:600}
+.tm{display:inline-block;min-width:68px;font-variant-numeric:tabular-nums;font-weight:600;color:var(--mu);font-size:14px}
+.mu{color:var(--mu);font-size:13px}
+.bd{white-space:pre-line;margin-top:4px;font-size:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.row:empty{display:none}
+button{font:inherit;font-size:14px;font-weight:500;border-radius:4px;padding:8px 14px;cursor:pointer;border:1px solid var(--ac);background:var(--ac);color:#fff;min-height:38px}
+button:hover{filter:brightness(1.12)}
+button.g{background:var(--card);color:var(--tx);border-color:var(--bd)}
+button.g:hover{background:var(--bg);filter:none}
+button.del{color:var(--bad)}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--br);outline-offset:2px}
+label{display:block;margin:12px 0 0;font-size:13px;font-weight:500;color:var(--mu)}
+input,textarea,select{display:block;width:100%;font:inherit;font-size:15px;margin-top:4px;padding:8px 10px;border:1px solid var(--bd);border-radius:4px;background:var(--card);color:var(--tx)}
+input[type=color]{height:40px;padding:2px}
+.date{font-size:26px;font-weight:600;line-height:1.2;margin:2px 0 2px}
+.pri{display:flex;gap:10px;align-items:center;margin-top:8px}
+.pri i{font:600 13px/24px system-ui,sans-serif;font-style:normal;width:24px;height:24px;text-align:center;border-radius:50%;background:var(--ac);color:#fff;flex:none}
+.pri input{margin:0}
+.sec{margin:26px 0 10px;font-size:15px;font-weight:600;border-bottom:1px solid var(--bd);padding-bottom:6px}
+dialog{border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);width:min(540px,94vw);padding:20px;max-height:90vh;overflow:auto}
+dialog::backdrop{background:rgba(10,20,35,.55)}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:9px 16px;border-radius:4px;font-size:14px;display:none;z-index:30;max-width:90vw}
+@media print{header,button,#toast{display:none!important}body::before{display:none}:root{--bg:#fff;--card:#fff;--tx:#000;--mu:#444;--bd:#bbb}.card{break-inside:avoid}}
+</style></head><body>
+<header><div class="bar"><div class="brand" id="hd"></div></div><div class="tabs"><nav id="nav" aria-label="Sections"></nav></div></header>
+<main id="main"></main><dialog id="dlg"></dialog><div id="toast" role="status" aria-live="polite"></div>
+<script>
+const KEY="executive-desk.v1";let mem=null,armed="";
+const blank=()=>({s:{name:"Executive Desk",ac:"#1d3557",theme:"auto",logo:"",feeds:[],proxy:"",key:"",every:"10",pri:{d:"",l:["","",""]}},meetings:[],tasks:[],contacts:[],trips:[],decisions:[]});
+const $=q=>document.querySelector(q);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const iso=d=>new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const off=n=>iso(new Date(Date.now()+n*864e5));
+const today=off(0);
+const fd=d=>d?new Date(d+"T00:00").toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short"}):"no date";
+const uid=()=>Math.random().toString(36).slice(2,9);
+function load(){let o=null;try{const r=localStorage.getItem(KEY);if(r)try{o=JSON.parse(r)}catch(e){try{localStorage.setItem(KEY+".corrupt",r)}catch(z){}}}catch(e){}return clean(o||mem)}
+function clean(o){const b=blank();if(!o||typeof o!="object")return b;
+ ["meetings","tasks","contacts","trips","decisions"].forEach(k=>{b[k]=Array.isArray(o[k])?o[k].filter(x=>x&&typeof x=="object"&&x.id).map(x=>Object.fromEntries(Object.entries(x).map(e=>[e[0],typeof e[1]=="string"?e[1]:String(e[1]==null?"":e[1])]))):[]});
+ const s=o.s&&typeof o.s=="object"?o.s:{};["name","ac","theme","logo","proxy","key","every"].forEach(k=>{if(typeof s[k]=="string")b.s[k]=s[k]});
+ if(!/^#[0-9a-f]{6}$/i.test(b.s.ac))b.s.ac="#14365d";if(!/^data:image\//.test(b.s.logo))b.s.logo="";
+ if(!["auto","light","dark"].includes(b.s.theme))b.s.theme="auto";if(!["5","10","15","30"].includes(b.s.every))b.s.every="10";
+ b.s.feeds=Array.isArray(s.feeds)?s.feeds.filter(f=>f&&typeof f.u=="string"&&typeof f.id=="string"):[];
+ if(s.pri&&Array.isArray(s.pri.l)&&s.pri.l.length==3)b.s.pri={d:String(s.pri.d||""),l:s.pri.l.map(String)};
+ return b}
+let D=load();
+function save(){mem=D;try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){toast("Could not save in this browser")}}
+function toast(m){const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display="none",2200)}
+function cp(t){const fb=()=>{const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("Copied")}catch(e){toast("Copy failed")}a.remove()};try{navigator.clipboard.writeText(t).then(()=>toast("Copied"),fb)}catch(e){fb()}}
+
+const S={
+meetings:{t:"Meetings",def:{date:today},f:[["title","Title","text"],["date","Date","date"],["time","Time","time"],["who","Attendees","text"],["prep","Prep checklist, one per line","area"],["notes","Notes and outcome","area"],["acts","Action items, one per line","area"]],
+ sort:x=>x.date+(x.time||""),head:x=>x.title,tm:x=>x.time||"All day",sub:x=>[fd(x.date),x.who].filter(Boolean).join(", "),body:x=>x.prep?x.prep.split("\n").filter(Boolean).map(l=>"☐ "+l).join("\n"):"",
+ act:x=>x.acts?`<button class="g" data-mk="${x.id}">Turn actions into tasks</button>`:""},
+tasks:{t:"Delegation",def:{st:"open"},f:[["task","Task","text"],["to","Assigned to","text"],["due","Due","date"],["st","Status","sel",["open","waiting","done"]],["nudge","Last nudge","date"]],
+ sort:x=>(x.st=="done"?"z":"a")+(x.due||"9"),head:x=>x.task,sub:x=>[x.to||"Unassigned","due "+fd(x.due),x.st,x.nudge?"nudged "+fd(x.nudge):""].filter(Boolean).join(", "),
+ cls:x=>x.st!="done"&&x.due&&x.due<today?"late":"",
+ act:x=>x.st=="done"?"":`<button class="g" data-nudge="${x.id}">Copy nudge</button><button class="g" data-done="${x.id}">Mark done</button>`},
+contacts:{t:"Contacts",def:{},f:[["name","Name","text"],["role","Role or company","text"],["prefs","Preferences (airline, seat, hotel, dietary, restaurants)","area"],["last","Last interaction","date"],["notes","Notes","area"]],
+ sort:x=>(x.name||"").toLowerCase(),head:x=>x.name,sub:x=>[x.role,x.last?"last contact "+fd(x.last):""].filter(Boolean).join(", "),body:x=>[x.prefs,x.notes].filter(Boolean).join("\n")},
+trips:{t:"Trips",def:{start:today,end:today},f:[["title","Trip","text"],["start","Start","date"],["end","End","date"],["itin","Itinerary by day","area"],["refs","Confirmation references","area"]],
+ sort:x=>x.start,head:x=>x.title,sub:x=>fd(x.start)+" to "+fd(x.end),body:x=>[x.itin,x.refs].filter(Boolean).join("\n")},
+decisions:{t:"Decisions",def:{date:today,st:"pending"},f:[["title","Decision","text"],["date","Date","date"],["ctx","Context","area"],["st","Status","sel",["pending","decided"]],["out","Outcome","area"]],
+ sort:x=>(x.st=="pending"?"a":"b")+x.date,head:x=>x.title,sub:x=>x.st+", "+fd(x.date),body:x=>x.out||x.ctx,
+ act:x=>x.st=="pending"?`<button class="g" data-dec="${x.id}">Mark decided</button>`:""}};
+
+function inp(f,v){const[n,l,t,o]=f;v=v==null?"":v;const a=`id="f_${n}"`;let h;
+ if(t=="area")h=`<textarea ${a} rows="3">${esc(v)}</textarea>`;
+ else if(t=="sel")h=`<select ${a}>${o.map(x=>`<option ${x==v?"selected":""}>${x}</option>`).join("")}</select>`;
+ else h=`<input ${a} type="${t}" value="${esc(v)}">`;
+ return `<label>${l}${h}</label>`}
+function openForm(c,id){const s=S[c],x=id?D[c].find(y=>y.id==id):{},dlg=$("#dlg");
+ dlg.innerHTML=`<h3>${id?"Edit":"Add"} ${s.t.toLowerCase()}</h3>${s.f.map(f=>inp(f,x[f[0]]!=null?x[f[0]]:s.def[f[0]])).join("")}<div class="row"><button id="ok">Save</button><button class="g" id="no">Cancel</button>${id?'<button class="g del" id="rm">Delete</button>':""}</div>`;
+ $("#ok").onclick=()=>{const v={};s.f.forEach(f=>v[f[0]]=$("#f_"+f[0]).value.trim());
+  if(!v[s.f[0][0]]){toast("Please fill in the first field");return}
+  if(id)Object.assign(x,v);else D[c].push(Object.assign({id:uid()},v));save();dlg.close();render()};
+ $("#no").onclick=()=>dlg.close();
+ if(id)$("#rm").onclick=()=>{D[c]=D[c].filter(y=>y.id!=id);save();dlg.close();render()};
+ dlg.showModal()}
+
+function card(c,x){const s=S[c],b=s.body?s.body(x):"";
+ return `<div class="card ${s.cls?s.cls(x):""}"><div class="ct" data-edit="${c}:${x.id}">${s.tm?`<span class="tm">${esc(s.tm(x))}</span>`:""}<b>${esc(s.head(x))}</b><div class="mu">${esc(s.sub(x))}</div>${b?`<div class="bd">${esc(b)}</div>`:""}</div><div class="row">${s.act?s.act(x):""}</div></div>`}
+function list(c){const s=S[c],a=[...D[c]].sort((p,q)=>s.sort(p)>s.sort(q)?1:-1);
+ return `<div class="top"><h2>${s.t}</h2><button data-add="${c}">Add ${s.t.toLowerCase().replace(/s$/,"")}</button></div>`+(a.length?a.map(x=>card(c,x)).join(""):`<p class="mu">Nothing here yet. Add your first entry, or load demo data in Setup.</p>`)}
+const sec=(t,h)=>`<div class="sec">${t}</div>${h||'<p class="mu">Nothing to show.</p>'}`;
+const byT=(a,b)=>(a.date+(a.time||""))>(b.date+(b.time||""))?1:-1;
+const open=()=>D.tasks.filter(t=>t.st!="done");
+
+function vToday(){const h=new Date().getHours(),g=h<12?"Good morning":h<18?"Good afternoon":"Good evening";
+ if(D.s.pri.d!=today){D.s.pri={d:today,l:["","",""]};save()}
+ const ms=D.meetings.filter(m=>m.date==today).sort(byT),up=D.meetings.filter(m=>m.date>today&&m.date<=off(7)).sort(byT).slice(0,4);
+ const att=open().filter(t=>t.due&&t.due<=today),dec=D.decisions.filter(d=>d.st=="pending");
+ const tr=D.trips.filter(t=>t.end>=today).sort((a,b)=>a.start>b.start?1:-1)[0];
+ return `<p class="mu" style="margin:0">${g}</p><div class="date">${new Date().toLocaleDateString(undefined,{weekday:"long",day:"numeric",month:"long"})}</div>${D.s.feeds.length?`<div class="mu">${D.s.feeds.some(f=>f.err)?"A calendar could not refresh, showing the last copy":D.s.feeds.some(f=>f.at)?"Calendars updated "+new Date(Math.max(...D.s.feeds.map(f=>f.at||0))).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}):"Waiting for the first calendar refresh"}</div>`:""}
+ ${sec("Top three priorities",D.s.pri.l.map((v,i)=>`<div class="pri"><i>${i+1}</i><input data-pri="${i}" value="${esc(v)}" placeholder="What matters most today?" aria-label="Priority ${i+1}"></div>`).join(""))}
+ ${sec("Today’s meetings",ms.map(m=>card("meetings",m)).join(""))}
+ ${sec("Needs your attention",att.map(t=>card("tasks",t)).join("")+dec.map(d=>card("decisions",d)).join(""))}
+ ${sec("Coming up this week",up.map(m=>card("meetings",m)).join(""))}
+ ${tr?sec(tr.start<=today?"Travelling now":"Next trip",card("trips",tr)):""}`}
+function vReview(){const ms=D.meetings.filter(m=>m.date>=today&&m.date<=off(7)).sort(byT);
+ return `<div class="top"><h2>Weekly review</h2><button data-do="print">Print</button></div><p class="mu">${fd(today)} to ${fd(off(7))}</p>
+ ${sec("Meetings this week",ms.map(m=>card("meetings",m)).join(""))}
+ ${sec("Open delegations",open().sort((a,b)=>(a.due||"9")>(b.due||"9")?1:-1).map(t=>card("tasks",t)).join(""))}
+ ${sec("Decisions waiting",D.decisions.filter(d=>d.st=="pending").map(d=>card("decisions",d)).join(""))}
+ ${sec("Upcoming trips",D.trips.filter(t=>t.end>=today).map(t=>card("trips",t)).join(""))}`}
+function vSetup(){const s=D.s;
+ return `<h2>Setup</h2><div class="card"><label>Desk name<input data-set="name" value="${esc(s.name)}"></label><label>Accent colour<input type="color" data-set="ac" value="${esc(s.ac)}"></label><label>Theme<select data-set="theme">${["auto","light","dark"].map(x=>`<option ${x==s.theme?"selected":""}>${x}</option>`).join("")}</select></label><div class="row"><button class="g" data-do="pick-logo">Upload logo</button>${s.logo?'<button class="g" data-do="nologo">Remove logo</button>':""}</div><input type="file" id="logo" accept="image/*" hidden></div>
+ <div class="card"><h3>Backup and restore</h3><p class="mu">All information stays in this browser on this device. Nothing is sent anywhere. Clearing browser data erases it, so export a backup regularly. Backups do not include calendar links or the access key.</p><textarea id="bk" rows="3" placeholder="Your backup appears here. Paste a backup here to restore it."></textarea><div class="row"><button data-do="export">Export backup</button><button class="g" data-do="import">Restore from box</button><button class="g" data-do="pick-imp">Open backup file</button></div><input type="file" id="imp" hidden></div>
+ <div class="card"><h3>Live calendar feeds</h3><p class="mu">Paste each calendar’s private link once and the planner keeps itself up to date while it is open. Treat the link like a password: anyone who has it can read that calendar. How often the provider refreshes its link is outside this app’s control and can lag by hours.</p><label>Relay address<input data-set="proxy" value="${esc(s.proxy)}" placeholder="https://desk-relay.example.workers.dev"></label><label>Access key<input type="password" data-set="key" value="${esc(s.key)}" autocomplete="off"></label><label>Refresh every<select data-set="every">${["5","10","15","30"].map(x=>`<option value="${x}" ${x==s.every?"selected":""}>${x} minutes</option>`).join("")}</select></label><label>Calendar link<input id="feedu" placeholder="https://… or webcal://…"></label><div class="row"><button data-do="addfeed">Add calendar</button><button class="g" data-do="sync">Refresh now</button></div>${s.feeds.map(f=>`<div class="row"><span class="mu" style="flex:1">${esc(f.h)}, ${f.err?"last refresh failed":f.at?"updated "+new Date(f.at).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}):"not refreshed yet"}</span><button class="g del" data-do="rm-${f.id}">Remove</button></div>`).join("")}<p class="mu">Where to find the link: Google Calendar, Settings, your calendar, Integrate calendar, Secret address in iCal format. Outlook, Settings, Calendar, Shared calendars, Publish a calendar, ICS link. Menu names change, so search your provider’s help for “iCal link” if you cannot find it. Live feeds work when this file is hosted on your own site with the relay set up.</p></div>
+ <div class="card"><h3>Connect any calendar</h3><p class="mu">Every mailbox (Gmail, Outlook, Microsoft 365, iCloud, Yahoo, work or personal) can export its calendar as a .ics file. Import one or several files, or paste the contents below. Recurring meetings are expanded 120 days ahead, and importing again skips meetings you already have. Times are shown in your device’s time zone when the file uses UTC, and as written otherwise.</p><textarea id="icp" rows="3" placeholder="Or paste calendar text here (BEGIN:VCALENDAR…)"></textarea><div class="row"><button class="g" data-do="pick-ics">Choose .ics files</button><button class="g" data-do="paste-ics">Import pasted text</button></div><p class="mu">Where to find the export: Google Calendar, Settings, Import and export. Outlook, File, Save Calendar. Apple Calendar, File, Export.</p><input type="file" id="ics" accept=".ics,text/calendar" multiple hidden></div>
+ <div class="card"><h3>Demo and reset</h3><div class="row"><button class="g" data-do="demo">Load demo data</button><button class="g del" data-do="clear">Erase everything</button></div></div>`}
+function ics(t,feed){const seen=new Set();t=t.replace(/\r?\n[ \t]/g,"");let n=0;const lim=off(120),p2=x=>String(x).padStart(2,"0"),
+ pd=s=>{const m=s.match(/(\d{4})(\d\d)(\d\d)(?:T(\d\d)(\d\d)(\d\d)?(Z)?)?/);if(!m)return null;if(m[7]){const d=new Date(Date.UTC(+m[1],m[2]-1,+m[3],+m[4],+m[5]));return{d:iso(d),t:p2(d.getHours())+":"+p2(d.getMinutes())}}return{d:m[1]+"-"+m[2]+"-"+m[3],t:m[4]?m[4]+":"+m[5]:""}};
+ t.split("BEGIN:VEVENT").slice(1).forEach(b=>{b=b.split("END:VEVENT")[0];
+  const g=k=>{const m=b.match(new RegExp("^"+k+"[^:\\n]*:(.*)$","m"));return m?m[1].replace(/\\([,;n])/g,(x,c)=>c=="n"?" ":c).trim():""};
+  const s=pd(g("DTSTART"));if(!s)return;const id=g("UID")||g("SUMMARY"),ex=(b.match(/^EXDATE[^:\n]*:(.*)$/gm)||[]).join(",").split(/[:,]/).map(pd).filter(Boolean).map(x=>x.d),r={};
+  g("RRULE").split(";").forEach(q=>{const z=q.split("=");r[z[0]]=z[1]});
+  const add=d=>{const k=id+"@"+d;if(ex.includes(d))return;const o={title:g("SUMMARY")||"Meeting",date:d,time:s.t,who:g("LOCATION")},e=D.meetings.find(m=>m.k==k);seen.add(k);if(e){if(feed)Object.assign(e,o);return}D.meetings.push(Object.assign({id:uid(),k,f:feed||"",prep:"",notes:"",acts:""},o));n++};
+  if(!r.FREQ){if(s.d>=today)add(s.d);return}
+  const u=r.UNTIL?(pd(r.UNTIL)||{d:lim}).d:lim,end=u<lim?u:lim,iv=+r.INTERVAL||1,cnt=+r.COUNT||1e9,days=(r.BYDAY||"").split(",").filter(Boolean).map(x=>["SU","MO","TU","WE","TH","FR","SA"].indexOf(x.slice(-2))),a=new Date(s.d+"T00:00");let c=0;
+  for(let d=new Date(a);iso(d)<=end&&c<cnt;d.setDate(d.getDate()+1)){const dd=Math.round((d-a)/864e5),mm=(d.getFullYear()-a.getFullYear())*12+d.getMonth()-a.getMonth(),sameDay=d.getDate()==a.getDate();
+   const ok=r.FREQ=="DAILY"?dd%iv==0:r.FREQ=="WEEKLY"?Math.floor(dd/7)%iv==0&&(days.length?days.includes(d.getDay()):d.getDay()==a.getDay()):r.FREQ=="MONTHLY"?mm%iv==0&&sameDay:mm%(12*iv)==0&&d.getMonth()==a.getMonth()&&sameDay;
+   if(ok){c++;if(iso(d)>=today)add(iso(d))}}});
+ if(feed)D.meetings=D.meetings.filter(m=>m.f!=feed||m.date<today||seen.has(m.k));
+ save();return n}
+function imp(t){const n=ics(t);toast(n?n+" meetings imported":"No new meetings found in that text");render()}
+function demo(){const m=(d,t,title,who,prep,acts)=>({id:uid(),title,date:off(d),time:t,who,prep:prep||"",notes:"",acts:acts||""});
+ D.meetings=[m(0,"09:00","Board pack review","CFO, Chief of Staff","Read the revised forecast\nConfirm the three headline messages"),m(0,"12:30","Lunch with Helena Marsh, Northgate Capital","Helena Marsh","Review the last term sheet\nBooked at Le Jardin, table for two","Send the data room link\nIntroduce Helena to the CFO"),m(0,"16:00","Weekly leadership sync","Leadership team"),m(1,"10:30","Candidate interview, Head of Operations","HR Director","Read the CV and the assessment notes"),m(3,"08:00","Flight to Singapore","","Passport and visa check"),m(5,"14:00","Partner dinner, Marina Bay","Wei Tan, Priya Nair","Dietary notes are in Contacts")];
+ D.tasks=[{id:uid(),task:"Finalise Q4 budget pack",to:"Daniel (Finance)",due:off(-1),st:"open",nudge:""},{id:uid(),task:"Confirm venue for the leadership offsite",to:"Amara",due:off(0),st:"waiting",nudge:off(-2)},{id:uid(),task:"Draft the all-hands announcement",to:"Comms team",due:off(3),st:"open",nudge:""},{id:uid(),task:"Renew the driver’s contract",to:"Office manager",due:off(-4),st:"done",nudge:""}];
+ D.contacts=[{id:uid(),name:"Helena Marsh",role:"Partner, Northgate Capital",prefs:"Sparkling water, no red meat",last:off(-12),notes:"Prefers short, written agendas."},{id:uid(),name:"Wei Tan",role:"Managing Director, Harbour Group",prefs:"Window seat, vegetarian",last:off(-30),notes:""}];
+ D.trips=[{id:uid(),title:"Singapore partner visit",start:off(3),end:off(6),itin:"Day 1: arrive 18:40, transfer to hotel\nDay 2: Harbour Group, then partner dinner\nDay 3: free morning, flight 15:20",refs:"Flight SQ-221 ref K7P2LM\nHotel ref 88213"}];
+ D.decisions=[{id:uid(),title:"Open a second office in Nairobi?",date:off(-3),ctx:"Two candidate sites. Awaiting the finance and legal summary.",st:"pending",out:""},{id:uid(),title:"Switch to quarterly board meetings",date:off(-20),ctx:"",st:"decided",out:"Approved. Starts next quarter."}];save()}
+
+let syncing=false;
+async function sync(quiet){const s=D.s;if(!s.feeds.length||syncing)return;if(!s.proxy){quiet||toast("Add your relay address in Setup first");return}
+ syncing=true;sync.t=Date.now();let bad=0;
+ for(const f of s.feeds){try{const ac=new AbortController(),to=setTimeout(()=>ac.abort(),15000);let t;try{const r=await fetch(s.proxy.replace(/\/+$/,"")+"/?url="+encodeURIComponent(f.u),{headers:{"x-desk-key":s.key},signal:ac.signal});t=r.ok?await r.text():""}finally{clearTimeout(to)}if(!t.includes("BEGIN:VCALENDAR"))throw 0;ics(t,f.id);f.at=Date.now();f.err=0}catch(e){bad++;f.err=1}}
+ D.meetings=D.meetings.filter(m=>!m.f||m.date>=off(-30)||m.notes||m.acts||m.prep);syncing=false;save();const a=document.activeElement;if(!(a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))&&!$("#dlg").open)render();
+ if(!quiet)toast(bad?"Could not refresh "+bad+" calendar(s). Check the relay address, access key and link.":"Calendar updated")}
+const TABS=[["today","Today"],["meetings","Meetings"],["tasks","Delegation"],["contacts","Contacts"],["trips","Trips"],["decisions","Decisions"],["review","Review"],["setup","Setup"]];
+function render(){const r=document.documentElement,t=(TABS.find(x=>x[0]==location.hash.slice(1))||TABS[0])[0];
+ r.style.setProperty("--ac",D.s.ac);D.s.theme=="auto"?r.removeAttribute("data-theme"):r.setAttribute("data-theme",D.s.theme);
+ document.title=D.s.name;
+ $("#hd").innerHTML=(D.s.logo?`<img src="${esc(D.s.logo)}" alt="">`:"")+`<b>${esc(D.s.name)}</b><span>${fd(today)}</span>`;
+ $("#nav").innerHTML=TABS.map(x=>`<a href="#${x[0]}" class="${x[0]==t?"on":""}" ${x[0]==t?'aria-current="page"':""}>${x[1]}</a>`).join("");
+ $("#main").innerHTML=({today:vToday,review:vReview,setup:vSetup}[t]||(()=>list(t)))()}
+addEventListener("hashchange",()=>{armed="";render();scrollTo(0,0)});
+document.addEventListener("input",e=>{const i=e.target.dataset.pri;if(i!=null){D.s.pri.l[i]=e.target.value;save()}});
+document.addEventListener("change",e=>{const t=e.target,k=t.dataset.set;
+ if(k){D.s[k]=t.value;save();render();return}
+ if(t.id=="ics"){[...t.files].forEach(x=>{const q=new FileReader();q.onload=()=>imp(q.result);q.readAsText(x)});t.value="";return}
+ const f=t.files&&t.files[0];if(!f)return;const r=new FileReader();
+ if(t.id=="logo"){if(f.size>3e5){toast("Logo is too large, use an image under 300 KB");return}r.onload=()=>{D.s.logo=r.result;save();render()};r.readAsDataURL(f)}
+ else{r.onload=()=>{if(t.id=="ics"){toast(ics(r.result)+" meetings imported");render()}else{$("#bk").value=r.result;toast("Backup loaded, tap Restore from box")}};r.readAsText(f)}});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-add],[data-edit],[data-nudge],[data-done],[data-mk],[data-dec],[data-do]");if(!b)return;const d=b.dataset,f=(c,i)=>D[c].find(x=>x.id==i);
+ if(d.add)return openForm(d.add);
+ if(d.edit){const p=d.edit.split(":");return openForm(p[0],p[1])}
+ if(d.nudge){const t=f("tasks",d.nudge);cp(`Hi ${t.to||"there"}, a quick nudge on “${t.task}”${t.due?" (due "+fd(t.due)+")":""}. Could you send me a short status update today? Thank you.`);t.nudge=today;save();return render()}
+ if(d.done){f("tasks",d.done).st="done";save();return render()}
+ if(d.dec){const x=f("decisions",d.dec);x.st="decided";save();openForm("decisions",x.id);return}
+ if(d.mk){const m=f("meetings",d.mk);m.acts.split("\n").map(s=>s.trim()).filter(Boolean).forEach(s=>D.tasks.push({id:uid(),task:s,to:"",due:"",st:"open",nudge:""}));m.acts="";save();toast("Tasks created in Delegation");return render()}
+ const a=d.do;
+ if(a=="print")return window.print();
+ if(a.startsWith("pick-"))return $("#"+{logo:"logo",imp:"imp",ics:"ics"}[a.slice(5)]).click();
+ if(a=="paste-ics"){imp($("#icp").value);return}
+ if(a=="addfeed"){const v=$("#feedu").value.trim().replace(/^webcal:/i,"https:");let h;try{h=new URL(v).hostname}catch(x){return toast("That does not look like a calendar link")}D.s.feeds.push({id:uid(),u:v,h});save();render();sync();return}
+ if(a=="sync"){sync();return}
+ if(a.startsWith("rm-")){const id=a.slice(3);D.s.feeds=D.s.feeds.filter(f=>f.id!=id);D.meetings=D.meetings.filter(m=>m.f!=id||m.date<today);save();return render()}
+ if(a=="nologo"){D.s.logo="";save();return render()}
+ if(a=="export"){const ta=$("#bk");ta.value=JSON.stringify(Object.assign({},D,{s:Object.assign({},D.s,{feeds:[],key:""})}));ta.select();cp(ta.value);try{const l=document.createElement("a");l.href=URL.createObjectURL(new Blob([ta.value],{type:"application/json"}));l.download="executive-desk-backup.json";l.click()}catch(x){}return}
+ if(a=="import"){try{const o=JSON.parse($("#bk").value);if(!Array.isArray(o.meetings))throw 0;D=clean(o);save();toast("Backup restored");render()}catch(x){toast("That is not a valid backup")}return}
+ if(a=="demo"){if(D.meetings.length||D.tasks.length)return toast("Erase existing data first, then load the demo");demo();return render()}
+ if(a=="clear"){if(armed!="clear"){armed="clear";b.textContent="Tap again to erase everything";return}armed="";D=blank();save();render()}});
+try{navigator.storage.persist()}catch(e){}addEventListener("error",()=>toast("Something went wrong. Your data is safe. Reload the page."));
+render();sync(true);setInterval(()=>{if(Date.now()-(sync.t||0)>=(+D.s.every||10)*6e4)sync(true)},3e4);document.addEventListener("visibilitychange",()=>{if(!document.hidden&&Date.now()-(sync.t||0)>6e4)sync(true)});
+</script></body></html>

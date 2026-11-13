@@ -1,0 +1,18 @@
+EXECUTIVE DESK COMMERCIAL LICENCE
+
+Notice: this licence was drafted without legal review. Have a lawyer check it, especially clause 9, before you rely on it.
+
+Licensor: Zaydien Williams
+Licensee: [Customer name or company. Fill in for each sale.]
+
+1. Grant. The Licensor grants the Licensee a non-exclusive, non-transferable licence to use Executive Desk (the Software) for the Licensee's own internal business or personal purposes, for up to 4 named users.
+2. Branding. The Licensee may change the name, logo and colours shown in the Software for its own use.
+3. Restrictions. The Licensee may not resell, sublicense, publish, share or distribute the Software or its source code to anyone outside the Licensee, or offer it to others as a product or service, without written permission from the Licensor.
+4. Ownership. The Licensor keeps all rights in the Software. No ownership is transferred.
+5. Data. The Software stores data in the user's own browser. The Licensor does not receive or have access to that data. The Licensee is responsible for backups and for the security of its own devices, calendar links and relay.
+6. Third-party services. Calendar providers and hosting services are separate from the Software. Their availability, refresh timing and terms are outside the Licensor's control.
+7. No warranty. The Software is provided "as is", without warranties of any kind, to the extent permitted by law.
+8. Limit of liability. To the extent permitted by law, the Licensor is not liable for indirect or consequential loss, and total liability is limited to the price paid for the licence.
+9. Refunds. All sales are final. No refunds are given. Nothing in this clause limits any right the Licensee has under South African law that cannot be excluded by agreement.
+10. Support. Support is provided by email at zaydien@gmail.com.
+11. Governing law. This licence is governed by the laws of the Republic of South Africa.
